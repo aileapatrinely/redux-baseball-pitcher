@@ -5,7 +5,36 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 
-const storeInstance = createStore(combineReducers(), applyMiddleware(logger));
+const addPitcher = (
+  state = [
+    {
+      pitcherList: [
+        'Maud Nelson',
+        'Ila Borders',
+        'Don Newcombe',
+        'CC Sabathia',
+      ],
+      newPitcher: '',
+    },
+  ],
+  action
+) => {
+  if (action.type === 'ADD_PITCHER') {
+    return [
+      ...state,
+      {
+        pitcherList: action.payload.pitcherList,
+        newPitcher: action.payload.newPitcher,
+      },
+    ];
+  }
+  return state;
+};
+
+const storeInstance = createStore(
+  combineReducers({ addPitcher }),
+  applyMiddleware(logger)
+);
 
 ReactDOM.render(
   <Provider store={storeInstance}>

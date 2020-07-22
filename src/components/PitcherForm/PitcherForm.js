@@ -16,6 +16,13 @@ class PitcherForm extends Component {
 
   handlePitcherSubmit = (event) => {
     event.preventDefault();
+    this.props.dispatch({
+      type: 'ADD_PITCHER',
+      payload: {
+        newPitcher: this.state.newPitcher,
+        pitcherList: this.state.pitcherList,
+      },
+    });
     this.setState({
       newPitcher: '',
       pitcherList: [...this.state.pitcherList, this.state.newPitcher],
