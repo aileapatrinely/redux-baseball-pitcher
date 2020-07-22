@@ -4,6 +4,18 @@ import PitcherForm from '../PitcherForm/PitcherForm';
 import CatcherForm from '../CatcherForm/CatcherForm';
 
 class App extends Component {
+  handleCatcherSelectClick = (selectedCatcher) => () => {
+    this.setState({
+      currentCatcher: selectedCatcher,
+    });
+  };
+
+  handlePitcherSelectClick = (selectedPitcher) => () => {
+    this.setState({
+      currentPitcher: selectedPitcher,
+    });
+  };
+
   render() {
     return (
       <div>
@@ -14,21 +26,25 @@ class App extends Component {
         <div>Total Catchers: {this.state.catcherList.length}</div> */}
         <h3>All Pitchers</h3>
         <PitcherForm />
-        {/* <ul>
-          {this.state.pitcherList.map((pitcher) => (
+        <ul>
+          {this.props.store.addPitcher.map((pitcher) => (
             <li onClick={this.handlePitcherSelectClick(pitcher)}>{pitcher}</li>
           ))}
-        </ul> */}
+        </ul>
         <h3>All Catchers</h3>
         <CatcherForm />
-        {/* <ul>
-          {this.state.catcherList.map((catcher) => (
+        <ul>
+          {this.props.store.addCatcher.map((catcher) => (
             <li onClick={this.handleCatcherSelectClick(catcher)}>{catcher}</li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     );
   }
 }
 
-export default App;
+const mapStoreToProps = (store) => {
+  return { store };
+};
+
+export default connect(mapStoreToProps)(App);

@@ -16,15 +16,15 @@ class CatcherForm extends Component {
 
   handleCatcherSubmit = (event) => {
     event.preventDefault();
+    this.props.dispatch({
+      type: 'ADD_CATCHER',
+      payload: {
+        catcherList: [...this.state.catcherList, this.state.newCatcher],
+      },
+    });
     this.setState({
       newCatcher: '',
       catcherList: [...this.state.catcherList, this.state.newCatcher],
-    });
-  };
-
-  handleCatcherSelectClick = (selectedCatcher) => () => {
-    this.setState({
-      currentCatcher: selectedCatcher,
     });
   };
 

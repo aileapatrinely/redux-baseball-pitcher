@@ -19,19 +19,12 @@ class PitcherForm extends Component {
     this.props.dispatch({
       type: 'ADD_PITCHER',
       payload: {
-        newPitcher: this.state.newPitcher,
-        pitcherList: this.state.pitcherList,
+        pitcherList: [...this.state.pitcherList, this.state.newPitcher],
       },
     });
     this.setState({
       newPitcher: '',
       pitcherList: [...this.state.pitcherList, this.state.newPitcher],
-    });
-  };
-
-  handlePitcherSelectClick = (selectedPitcher) => () => {
-    this.setState({
-      currentPitcher: selectedPitcher,
     });
   };
 

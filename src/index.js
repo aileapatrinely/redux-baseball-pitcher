@@ -6,17 +6,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 
 const addPitcher = (
-  state = [
-    {
-      pitcherList: [
-        'Maud Nelson',
-        'Ila Borders',
-        'Don Newcombe',
-        'CC Sabathia',
-      ],
-      newPitcher: '',
-    },
-  ],
+  state = ['Maud Nelson', 'Ila Borders', 'Don Newcombe', 'CC Sabathia'],
+
   action
 ) => {
   if (action.type === 'ADD_PITCHER') {
@@ -24,7 +15,22 @@ const addPitcher = (
       ...state,
       {
         pitcherList: action.payload.pitcherList,
-        newPitcher: action.payload.newPitcher,
+      },
+    ];
+  }
+  return state;
+};
+
+const addCatcher = (
+  state = ['Roy Campanella', 'Elston Howard', 'Kenji Jojima'],
+
+  action
+) => {
+  if (action.type === 'ADD_CATCHER') {
+    return [
+      ...state,
+      {
+        catcherList: action.payload.catcherList,
       },
     ];
   }
@@ -32,7 +38,7 @@ const addPitcher = (
 };
 
 const storeInstance = createStore(
-  combineReducers({ addPitcher }),
+  combineReducers({ addPitcher, addCatcher }),
   applyMiddleware(logger)
 );
 
