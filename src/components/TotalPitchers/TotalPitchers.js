@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 
 class TotalPitchers extends Component {
   render() {
-    return;
+    return <div>Total Pitchers: {this.props.store.addPitcher.length}</div>;
   }
 }
 
-export default connect()(TotalPitchers);
+const mapStoreToProps = (store) => {
+  return { store };
+};
+
+export default connect(mapStoreToProps)(TotalPitchers);

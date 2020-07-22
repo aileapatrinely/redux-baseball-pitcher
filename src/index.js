@@ -12,7 +12,6 @@ const addPitcher = (
 ) => {
   if (action.type === 'ADD_PITCHER') {
     return [
-      ...state,
       {
         pitcherList: action.payload.pitcherList,
       },
@@ -28,7 +27,6 @@ const addCatcher = (
 ) => {
   if (action.type === 'ADD_CATCHER') {
     return [
-      ...state,
       {
         catcherList: action.payload.catcherList,
       },
