@@ -5,4 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={storeInstance}>
+        <App />
+    </Provider>,
+    , document.getElementById('root'));
